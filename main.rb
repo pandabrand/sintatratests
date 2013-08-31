@@ -9,6 +9,14 @@ configure do
   set :password, 'sinatra'
 end
 
+configure :development do
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+end
+
+configure :production do
+	DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
 set :public_folder, 'assets'
 set :views, 'templates'
 set :session_secret, 'this is a long boring secret to the make it hard to figure out'
