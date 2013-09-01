@@ -10,7 +10,7 @@ require './song'
 require './sinatra/auth'
 
 require 'sinatra/reloader' if development?
-require 'v8' if developement?
+require 'v8' if development?
 
 configure do
   enable :sessions
