@@ -38,6 +38,7 @@ end
 
 get '/songs/new' do
 	protected!
+  @song = Song.new
   erb :new_song
 end
 

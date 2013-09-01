@@ -1,6 +1,5 @@
 require 'sinatra/base'
 require 'sinatra/flash'
-require 'sinatra/extension'
 
 module Sinatra
 
@@ -29,7 +28,7 @@ module Sinatra
 				erb :login
 			end
 			
-			app.post 'login' do
+			app.post '/login' do
 				if params[:username] == settings.username && params[:password] == settings.password
 					session[:admin] = true
 					flash[:notice] = "You are now logged in as #{settings.username}"
@@ -40,7 +39,7 @@ module Sinatra
 				end
 			end
 			
-			app.get 'logout' do
+			app.get '/logout' do
 				session[:admin] = nil
 				flash[:notice] = "You have now logged out."
 				redirect to('/')

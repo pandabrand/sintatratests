@@ -1,8 +1,12 @@
 require 'sinatra'
 require 'sinatra/contrib'
 require 'sinatra/flash'
+
 require 'sass'
 require 'pony'
+require 'v8'
+require 'coffee-script'
+
 require './song'
 require './sinatra/auth'
 
@@ -39,6 +43,7 @@ before do
 end
 
 get('/styles.css'){ scss :styles }
+get('/js/application.js'){ coffee :application }
 
 get '/' do
   erb :home
@@ -68,6 +73,7 @@ post '/contact' do
 end
 
 not_found do
+	puts request.path_info
   erb :not_found
 end
 
