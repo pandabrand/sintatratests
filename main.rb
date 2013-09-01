@@ -4,13 +4,13 @@ require 'sinatra/flash'
 
 require 'sass'
 require 'pony'
-require 'v8'
 require 'coffee-script'
 
 require './song'
 require './sinatra/auth'
 
 require 'sinatra/reloader' if development?
+require 'v8' if developement?
 
 configure do
   enable :sessions
@@ -27,6 +27,7 @@ configure :development do
 end
 
 configure :production do
+	assets.enabled = false
 	DataMapper.setup(:default, ENV['DATABASE_URL'])
   set :email_address    => 'smtp.sendgrid.net',
   		:email_user_name	=> ENV['SENDGRID_USERNAME'],
