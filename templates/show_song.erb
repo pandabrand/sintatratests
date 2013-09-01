@@ -2,6 +2,12 @@
 <p>Release Date: <%= "#{@song.released_on.strftime("%e %B %Y")}" if @song.released_on %></p>
 <p>Length: <%= "#{@song.length/60}" %>:<%= "#{@song.length%60}" %></p>
 <pre><%= @song.lyrics %></pre>
+<div id="like">
+	<%= erb :likes %>
+	<form action="<%= "/songs/#{@song.id}/like" %>" method="POST">
+		<input type="submit" value="Like">
+	</form>
+</div>
 <p><a href="/songs">back to songs index</a></p>
 <p><a href="<%= "/songs/#{@song.id}/edit" %>">edit this song</a></p>
 <form action="<%= "/songs/#{@song.id}" %>" method="POST">
