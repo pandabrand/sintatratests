@@ -2,9 +2,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title><%= @title || "Songs By Sinatra" %></title>
+	<title><%= @title %></title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<%= css :styles %>
 </head>
 <body>
 	<header>
@@ -12,7 +12,15 @@
 	</header>
 	<%= erb :nav %>
 	<section>
+	  <%= styled_flash %>
 		<%= yield %>
 	</section>
+	<footer>
+		<% if authorized? %>
+			<a href="/logout">Log Out</a>
+		<% else %>
+			<a href="/login">Log In</a>
+		<% end %>
+	</footer>
 </body>
 </html>
