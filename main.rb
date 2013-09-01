@@ -27,7 +27,6 @@ configure :development do
 end
 
 configure :production do
-	assets.enabled = false
 	DataMapper.setup(:default, ENV['DATABASE_URL'])
   set :email_address    => 'smtp.sendgrid.net',
   		:email_user_name	=> ENV['SENDGRID_USERNAME'],
